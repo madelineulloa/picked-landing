@@ -84,6 +84,7 @@ a { color: inherit; }
   transition: transform .15s ease;
 }
 .btn:hover { transform: translateY(-1px); }
+a.btn { display: inline-block; text-decoration: none; }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .form-note { margin-top: 12px; font-size: 14px; color: var(--ink-soft); min-height: 1.4em; }
 .form-note.ok { color: var(--ultra); }
@@ -178,12 +179,10 @@ footer .wordmark { font-size: 22px; color: var(--ink); }
     <div>
       <h1>You don't have to search through the bad stuff to find the <em>good stuff.</em></h1>
       <p class="lede">Picked is a secondhand furniture marketplace for Los Angeles where every seller and every listing is approved by hand. Vintage lighting, art, decor and furniture worth the drive, at prices below the big design sites.</p>
-      <form class="signup" id="buyer-form" novalidate>
-        <label for="buyer-email" class="visually-hidden" hidden>Email</label>
-        <input id="buyer-email" type="email" placeholder="Your email" autocomplete="email" required>
-        <button class="btn" type="submit">Join the waitlist</button>
-      </form>
-      <p class="form-note" id="buyer-note" aria-live="polite">Get in when we open to the first buyers.</p>
+      <div class="signup">
+        <a class="btn" href="https://tally.so/r/OQlkYK" target="_blank" rel="noopener">Join the waitlist</a>
+      </div>
+      <p class="form-note">Get in when we open to the first buyers.</p>
     </div>
 
     <div>
@@ -337,7 +336,6 @@ footer .wordmark { font-size: 22px; color: var(--ink); }
       form.reset();
     });
   }
-  wire("buyer-form", "buyer-email", "buyer-note", "You're on the list.");
   wire("seller-form", "seller-email", "seller-note", "Thanks, we'll take a look.");
 </script>
 </body>
