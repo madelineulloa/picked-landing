@@ -4,339 +4,183 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="A curated secondhand furniture marketplace. Every seller and every listing is approved by hand.">
-<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Picked: Curated secondhand furniture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
-/* Layout: gallery wall. Plaster ground, wide margins, one strikethrough moment in the hero, listings shown like tagged museum pieces. */
+/* Layout: a design-magazine spread. Warm stone ground, oversized high-contrast serif headline, a sideways-scrolling shelf of lots, cobalt accent. Single light theme by choice. */
 :root {
-  --plaster: #ECEBE5;
-  --plaster-2: #E2E1D9;
-  --ink: #1C1E1A;
-  --ink-soft: #5D605A;
-  --rule: #C9C8BF;
-  --ultra: #2D3FCF;
-  --ultra-ink: #FFFFFF;
-  --burl: #8A5A3B;
-  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --espresso: #E3E1DB;
+  --espresso-2: #D7D4CC;
+  --milk: #1F1714;
+  --milk-soft: #625953;
+  --lilac: #2F44C4;
+  --rule: #BDB8AE;
+  --display: "Gloock", "Didot", Georgia, serif;
   --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --plaster: #151613; --plaster-2: #1E201C; --ink: #E9E7DF; --ink-soft: #A3A49C;
-    --rule: #34362F; --ultra: #8E9BFF; --ultra-ink: #10122A; --burl: #C99673;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --plaster: #151613; --plaster-2: #1E201C; --ink: #E9E7DF; --ink-soft: #A3A49C;
-  --rule: #34362F; --ultra: #8E9BFF; --ultra-ink: #10122A; --burl: #C99673;
-  color-scheme: dark;
-}
-
 * { box-sizing: border-box; }
-body {
-  background: var(--plaster); color: var(--ink);
-  font-family: var(--body); font-size: 17px; line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-.wrap {
-  max-width: 1160px; margin: 0 auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
+body { background: var(--espresso); color: var(--milk); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 @media (min-width: 720px) { .wrap { padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); } }
-
-h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
 p { margin: 0; }
-.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
 a { color: inherit; }
-:focus-visible { outline: 2px solid var(--ultra); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--lilac); outline-offset: 3px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--lilac); }
 
-/* Nav */
-.nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 22px; }
-.wordmark { font-family: var(--display); font-style: italic; font-size: 30px; line-height: 1; text-decoration: none; }
-.nav-right { display: flex; align-items: center; gap: 20px; }
-.nav-right a.text { font-size: 15px; text-decoration: none; color: var(--ink-soft); }
-.nav-right a.text:hover { color: var(--ink); }
-@media (max-width: 560px) { .nav-right .label { display: none; } }
+.nav { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding-block: 22px; border-bottom: 1px solid var(--rule); }
+.nav .left { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--milk-soft); }
+.logo { font-family: var(--display); font-size: 34px; line-height: 1; text-decoration: none; letter-spacing: -0.01em; }
+.nav a.text { justify-self: end; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; }
+@media (max-width: 560px) { .nav { grid-template-columns: auto 1fr; } .nav .left { display: none; } }
 
-/* Hero */
-.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; padding-block: 48px 72px; border-bottom: 1px solid var(--rule); }
-.hero > * { min-width: 0; }
-.hero h1 { font-size: clamp(44px, 6.4vw, 84px); line-height: 0.98; letter-spacing: -0.02em; }
-.hero h1 em { color: var(--ultra); }
-.hero .lede { margin-top: 26px; max-width: 34em; font-size: 19px; color: var(--ink-soft); }
-@media (max-width: 860px) { .hero { grid-template-columns: 1fr; gap: 44px; padding-block: 24px 56px; } }
+.hero { padding-block: 64px 56px; }
+.hero h1 { font-size: clamp(56px, 11.5vw, 176px); line-height: .92; letter-spacing: -0.035em; }
+.hero h1 .l2 { display: block; padding-left: 12%; color: var(--lilac); }
+@media (max-width: 560px) { .hero h1 .l2 { padding-left: 0; } }
+.hero-foot { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; }
+.hero-foot > * { min-width: 0; }
+.lede { font-size: 20px; color: var(--milk-soft); max-width: 30em; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; justify-content: flex-end; }
+.cta small { color: var(--milk-soft); font-size: 15px; }
+@media (max-width: 760px) { .hero-foot { grid-template-columns: 1fr; } .cta { justify-content: flex-start; } }
+.btn { display: inline-block; text-decoration: none; font: inherit; font-weight: 600; font-size: 16px; padding: 16px 30px; border-radius: 999px; background: var(--lilac); color: var(--espresso); border: 1px solid var(--lilac); cursor: pointer; transition: background .2s ease, color .2s ease; }
+.btn:hover { background: transparent; color: var(--lilac); }
 
-.signup { margin-top: 34px; display: flex; gap: 10px; flex-wrap: wrap; max-width: 520px; }
-.signup input {
-  flex: 1 1 240px; min-width: 0; font: inherit; font-size: 16px; padding: 14px 16px;
-  background: transparent; color: var(--ink); border: 1px solid var(--ink); border-radius: 0;
-}
-.signup input::placeholder { color: var(--ink-soft); }
-.btn {
-  font: inherit; font-size: 16px; font-weight: 600; padding: 14px 22px; cursor: pointer;
-  background: var(--ultra); color: var(--ultra-ink); border: 1px solid var(--ultra); border-radius: 0;
-  transition: transform .15s ease;
-}
-.btn:hover { transform: translateY(-1px); }
-a.btn { display: inline-block; text-decoration: none; }
-.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
-.form-note { margin-top: 12px; font-size: 14px; color: var(--ink-soft); min-height: 1.4em; }
-.form-note.ok { color: var(--ultra); }
+/* Shelf of lots */
+.shelf-wrap { border-block: 1px solid var(--rule); padding-block: 28px; }
+.shelf-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.shelf-head span:last-child { font-size: 13px; color: var(--milk-soft); }
+.shelf { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(260px, 1fr); gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+.lot { scroll-snap-align: start; background: var(--espresso-2); padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.lot .art { aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; border: 1px solid var(--rule); }
+.lot svg { width: 46%; height: auto; overflow: visible; }
+.lot svg * { fill: none; stroke: var(--milk); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.lot svg .hi { stroke: var(--lilac); }
+.lot .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.lot h3 { font-size: 24px; line-height: 1.1; min-width: 0; }
+.lot .price { font-family: var(--display); font-size: 24px; color: var(--lilac); white-space: nowrap; }
+.lot .meta { font-size: 14px; color: var(--milk-soft); }
 
-/* The strikethrough feed */
-.feed { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
-.feed li { display: flex; justify-content: space-between; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--rule); font-size: 15px; }
-.feed li > span:first-child { min-width: 0; }
-.feed .meta { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); white-space: nowrap; }
-.feed .bad { color: var(--ink-soft); }
-.feed .bad > span:first-child {
-  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 100% 1px;
-  animation: strike .5s ease-out both;
-}
-.feed .bad:nth-child(2) > span:first-child { animation-delay: .15s; }
-.feed .bad:nth-child(3) > span:first-child { animation-delay: .3s; }
-.feed .bad:nth-child(4) > span:first-child { animation-delay: .45s; }
-.feed .bad:nth-child(5) > span:first-child { animation-delay: .6s; }
-.feed .bad:nth-child(7) > span:first-child { animation-delay: .75s; }
-@keyframes strike { from { background-size: 0% 1px; } to { background-size: 100% 1px; } }
-.feed .good { padding: 18px 0; }
-.feed .good > span:first-child { font-family: var(--display); font-size: 22px; line-height: 1.2; color: var(--ink); }
-.feed .good .meta { color: var(--ultra); align-self: center; }
-.feed-caption { margin-top: 14px; }
-@media (prefers-reduced-motion: reduce) { .feed .bad > span:first-child { animation: none; } .btn { transition: none; } }
+section { padding-block: 88px; }
+.split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px 72px; }
+.split > * { min-width: 0; }
+.split h2 { font-size: clamp(40px, 5.4vw, 76px); line-height: .95; letter-spacing: -0.02em; }
+.split .intro { margin-top: 20px; color: var(--milk-soft); max-width: 26em; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } section { padding-block: 60px; } }
+.points { display: flex; flex-direction: column; }
+.points div { padding-block: 22px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 140px 1fr; gap: 8px 24px; }
+.points div > * { min-width: 0; }
+.points h3 { font-size: 28px; line-height: 1.1; }
+.points p { grid-column: 2; color: var(--milk-soft); }
+@media (max-width: 560px) { .points div { grid-template-columns: 1fr; } .points p { grid-column: 1; } }
 
-/* Sections */
-section { padding-block: 80px; border-bottom: 1px solid var(--rule); }
-.section-head { display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; margin-bottom: 48px; align-items: end; }
-.section-head h2 { font-size: clamp(34px, 4.2vw, 54px); line-height: 1.04; letter-spacing: -0.01em; }
-.section-head p { color: var(--ink-soft); max-width: 36em; }
-@media (max-width: 760px) { .section-head { grid-template-columns: 1fr; gap: 16px; } section { padding-block: 56px; } }
+.feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.feats div { background: var(--espresso); padding: 24px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.feats strong { font-family: var(--display); font-weight: 400; font-size: 24px; }
+.feats span { color: var(--milk-soft); font-size: 15px; }
+@media (max-width: 760px) { .feats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 460px) { .feats { grid-template-columns: 1fr; } }
 
-/* The bar */
-.bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-.bar > div { min-width: 0; border-top: 1px solid var(--ink); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-.bar h3 { font-size: 26px; line-height: 1.15; }
-.bar p { color: var(--ink-soft); }
-@media (max-width: 760px) { .bar { grid-template-columns: 1fr; gap: 32px; } }
+.sell { background: var(--milk); color: var(--espresso); }
+.sell .split .intro { color: var(--espresso); opacity: .75; }
+.sell form { display: flex; flex-direction: column; gap: 12px; align-self: end; }
+.sell input { width: 100%; font: inherit; padding: 16px 0; border: 0; border-bottom: 1px solid var(--espresso); background: transparent; color: var(--espresso); border-radius: 0; font-size: 18px; }
+.sell input::placeholder { color: var(--espresso); opacity: .55; }
+.sell .btn { align-self: flex-start; margin-top: 12px; background: var(--espresso); color: var(--milk); border-color: var(--espresso); }
+.sell .btn:hover { background: transparent; color: var(--espresso); }
+.form-note { font-size: 14px; min-height: 1.4em; opacity: .75; }
 
-/* Listings */
-.listings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.card { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
-.plate { aspect-ratio: 4 / 5; max-width: 100%; background: var(--plaster-2); display: grid; place-items: center; position: relative; }
-.plate svg { width: 62%; height: auto; overflow: visible; }
-.plate svg * { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.plate svg .wood { stroke: var(--burl); }
-.plate svg .glow { stroke: var(--ultra); }
-.tag { position: absolute; top: 12px; left: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; background: var(--plaster); padding: 4px 8px; }
-.card-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-.card h3 { font-size: 21px; line-height: 1.2; min-width: 0; }
-.price { font-family: var(--mono); font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.specs { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 2px; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips span { font-size: 13px; border: 1px solid var(--rule); padding: 2px 9px; border-radius: 99px; color: var(--ink-soft); }
-.examples-note { margin-top: 28px; }
-@media (max-width: 860px) { .listings { grid-template-columns: repeat(2, 1fr); } .listings .card:nth-child(3) { display: none; } }
-@media (max-width: 520px) { .listings { grid-template-columns: 1fr; } .listings .card:nth-child(3) { display: flex; } }
-
-/* Features */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid var(--rule); }
-.features > div { min-width: 0; padding: 22px 24px 26px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 6px; }
-.features strong { font-weight: 600; font-size: 17px; }
-.features p { color: var(--ink-soft); font-size: 15.5px; }
-
-/* Sellers band */
-.sellers { background: var(--ink); color: var(--plaster); border-bottom: none; }
-.sellers .section-head p, .sellers .label { color: color-mix(in srgb, var(--plaster) 70%, var(--ink)); }
-.sellers .section-head { margin-bottom: 36px; }
-.sellers .signup input { border-color: var(--plaster); color: var(--plaster); }
-.sellers .signup input::placeholder { color: color-mix(in srgb, var(--plaster) 60%, var(--ink)); }
-.sellers .form-note { color: color-mix(in srgb, var(--plaster) 70%, var(--ink)); }
-.sellers .form-note.ok { color: var(--plaster); }
-.sellers .signup { max-width: 720px; }
-
-footer { padding-block: 36px 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; color: var(--ink-soft); font-size: 14px; }
-footer .wordmark { font-size: 22px; color: var(--ink); }
+footer { padding-block: 32px 44px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--milk-soft); }
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } .shelf { scroll-snap-type: none; } }
 </style>
 </head>
 <body>
-
 <div class="wrap">
   <header class="nav">
-    <a class="wordmark" href="#top" id="top">Picked</a>
-    <div class="nav-right">
-      <span class="label">Early access</span>
-      <a class="text" href="#sell">Sell with us</a>
-    </div>
+    <span class="left">Secondhand, approved by hand</span>
+    <a class="logo" href="#top" id="top">Picked</a>
+    <a class="text" href="#sell">Sell with us</a>
   </header>
 
   <div class="hero">
-    <div>
-      <h1>You don't have to search through the bad stuff to find the <em>good stuff.</em></h1>
-      <p class="lede">Picked is a secondhand furniture marketplace where every seller and every listing is approved by hand. Shop vintage lighting, art, decor and furniture from sellers near you, at prices below the big design sites.</p>
-      <div class="signup">
+    <h1>Only the good stuff. <span class="l2">None of the digging.</span></h1>
+    <div class="hero-foot">
+      <p class="lede">Picked is a secondhand furniture marketplace where every seller and every listing is approved by hand. Shop vintage lighting, art, decor and furniture from sellers near you.</p>
+      <div class="cta">
+        <small>Be first in when we launch.</small>
         <a class="btn" href="https://tally.so/r/OQlkYK" target="_blank" rel="noopener">Join the waitlist</a>
       </div>
-      <p class="form-note">Be first in when we launch.</p>
-    </div>
-
-    <div>
-      <ul class="feed" aria-label="What a typical marketplace search looks like, with only one good listing">
-        <li class="bad"><span>Couch MUST GO TODAY, pet friendly home</span><span class="meta">$40</span></li>
-        <li class="bad"><span>IKEA dresser, some damage, no drawers</span><span class="meta">$25</span></li>
-        <li class="bad"><span>Free if you haul it (3rd floor, no elevator)</span><span class="meta">$0</span></li>
-        <li class="bad"><span>"Mid century" "modern" accent chair</span><span class="meta">$350</span></li>
-        <li class="bad"><span>Still available?? message for details</span><span class="meta">—</span></li>
-        <li class="good"><span>1970s burl wood console, original brass pulls</span><span class="meta">$640 · Hudson, NY</span></li>
-        <li class="bad"><span>Glass table (crack not noticeable)</span><span class="meta">$60</span></li>
-      </ul>
-      <p class="label feed-caption">We read the whole feed so you only see this line</p>
     </div>
   </div>
 
-  <section>
-    <div class="section-head">
-      <h2>A taste bar, checked twice</h2>
-      <p>Facebook Marketplace and Craigslist have plenty of good furniture, hidden under everything else. Picked keeps the good pieces and leaves the rest out.</p>
-    </div>
-    <div class="bar">
-      <div>
-        <span class="label">The sellers</span>
-        <h3>Every shop is invited in</h3>
-        <p>Dealers, pickers and collectors apply with their past pieces. Only the ones with a real eye get approved.</p>
-      </div>
-      <div>
-        <span class="label">The listings</span>
-        <h3>Every piece is reviewed</h3>
-        <p>Approved sellers still go through review for each listing before it goes live. If it isn't good, you won't see it.</p>
-      </div>
-      <div>
-        <span class="label">Near you</span>
-        <h3>Shop local, see it first</h3>
-        <p>You see pieces close to home. Meet the seller, inspect the piece in person, and take it home the same day. Shipping is coming later.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-head">
-      <h2>What you'll find</h2>
-      <p>Listings come with real measurements, the city they're in, and style tags you can filter by.</p>
-    </div>
-    <div class="listings">
-      <article class="card">
-        <div class="plate">
-          <span class="tag">Lighting</span>
-          <svg viewBox="0 0 120 150" aria-hidden="true">
-            <path d="M40 140 L80 140"/>
-            <path d="M60 140 L60 40 Q60 12 88 14 Q104 16 104 34"/>
-            <path class="glow" d="M92 34 L116 34 L110 50 L98 50 Z"/>
-            <path class="glow" d="M104 56 L104 64 M96 58 L92 64 M112 58 L116 64"/>
-          </svg>
-        </div>
-        <div class="card-row"><h3>Brass arc floor lamp</h3><span class="price">$420</span></div>
-        <div class="specs"><span>H 74 × W 38 in · rewired 2025</span><span>Pickup in Chicago, IL</span></div>
-        <div class="chips"><span>Mid-century</span><span>Brass</span></div>
+  <div class="shelf-wrap">
+    <div class="shelf-head"><span class="eyebrow">On the shelf</span><span>Example listings</span></div>
+    <div class="shelf" tabindex="0" aria-label="Example listings">
+      <article class="lot">
+        <div class="art"><svg viewBox="0 0 120 150" aria-hidden="true"><path class="hi" d="M8 58 L112 58 L112 96 L8 96 Z"/><path d="M60 58 L60 96"/><path d="M16 96 L14 118 M104 96 L106 118"/><path d="M40 40 Q46 30 52 40 L50 58 L42 58 Z"/></svg></div>
+        <div class="row"><h3>Burl wood console</h3><span class="price">$640</span></div>
+        <span class="meta">1970s · H 30 × W 72 in · Hudson, NY</span>
       </article>
-      <article class="card">
-        <div class="plate">
-          <span class="tag">Furniture</span>
-          <svg viewBox="0 0 120 150" aria-hidden="true">
-            <path d="M30 30 Q30 22 38 22 L76 22 Q84 22 84 30 L84 84"/>
-            <path class="wood" d="M30 30 L30 80 L88 84"/>
-            <path d="M84 84 L84 132 L28 132 Q22 132 24 124 L44 84"/>
-            <path class="wood" d="M30 80 L88 80 L92 86 L26 86 Z"/>
-          </svg>
-        </div>
-        <div class="card-row"><h3>Cantilever chair, cane seat</h3><span class="price">$185</span></div>
-        <div class="specs"><span>H 32 × W 18 × D 22 in · set of 2</span><span>Pickup in Austin, TX</span></div>
-        <div class="chips"><span>Bauhaus</span><span>Cane</span></div>
+      <article class="lot">
+        <div class="art"><svg viewBox="0 0 120 150" aria-hidden="true"><path d="M40 140 L80 140"/><path d="M60 140 L60 40 Q60 12 88 14 Q104 16 104 34"/><path class="hi" d="M92 34 L116 34 L110 50 L98 50 Z"/></svg></div>
+        <div class="row"><h3>Brass arc floor lamp</h3><span class="price">$420</span></div>
+        <span class="meta">Rewired 2025 · H 74 in · Chicago, IL</span>
       </article>
-      <article class="card">
-        <div class="plate">
-          <span class="tag">Furniture</span>
-          <svg viewBox="0 0 120 150" aria-hidden="true">
-            <path class="wood" d="M8 58 L112 58 L112 96 L8 96 Z"/>
-            <path class="wood" d="M60 58 L60 96"/>
-            <path d="M30 76 L38 76 M82 76 L90 76"/>
-            <path d="M16 96 L14 118 M104 96 L106 118"/>
-            <path d="M40 40 Q46 30 52 40 L50 58 L42 58 Z"/>
-            <path d="M80 58 L80 44 L96 44 L96 58"/>
-          </svg>
-        </div>
-        <div class="card-row"><h3>Burl wood console</h3><span class="price">$640</span></div>
-        <div class="specs"><span>H 30 × W 72 × D 18 in · 1970s</span><span>Pickup in Hudson, NY</span></div>
-        <div class="chips"><span>Burl</span><span>Vintage</span></div>
+      <article class="lot">
+        <div class="art"><svg viewBox="0 0 120 150" aria-hidden="true"><path d="M30 30 Q30 22 38 22 L76 22 Q84 22 84 30 L84 84"/><path class="hi" d="M30 30 L30 80 L88 84"/><path d="M84 84 L84 132 L28 132 Q22 132 24 124 L44 84"/></svg></div>
+        <div class="row"><h3>Cane cantilever chairs</h3><span class="price">$185</span></div>
+        <span class="meta">Pair · H 32 × W 18 in · Austin, TX</span>
       </article>
     </div>
-    <p class="label examples-note">Example listings</p>
-  </section>
-
-  <section>
-    <div class="section-head">
-      <h2>Built for people who browse for fun</h2>
-      <p>The things that are missing when you're hunting on Marketplace and in Instagram DMs.</p>
-    </div>
-    <div class="features">
-      <div><strong>Filters that work</strong><p>Narrow by category, price, style and how far you'll drive.</p></div>
-      <div><strong>Boards</strong><p>Save pieces into collections like "Living room ideas."</p></div>
-      <div><strong>Follow sellers</strong><p>See new pieces from the shops you love as soon as they're listed.</p></div>
-      <div><strong>Saved searches</strong><p>Get an email when something matching your search is listed.</p></div>
-      <div><strong>Offers in one place</strong><p>Make an offer, get a counter, and keep the whole thread with the listing.</p></div>
-      <div><strong>Your order history</strong><p>Every purchase and sale, linked back to the original listing.</p></div>
-    </div>
-  </section>
+  </div>
 </div>
 
-<section class="sellers" id="sell">
-  <div class="wrap">
-    <div class="section-head">
-      <h2>Have a good eye? Sell with us.</h2>
-      <p>We're inviting a small group of dealers, pickers and collectors in cities across the country to be the first shops on Picked. Tell us where we can see your pieces and we'll be in touch.</p>
+<section>
+  <div class="wrap split">
+    <div><h2>A taste bar, checked twice</h2><p class="intro">Marketplace and Craigslist have plenty of good furniture, buried under everything else. Picked keeps the good pieces and leaves the rest out.</p></div>
+    <div class="points">
+      <div><span class="eyebrow">The sellers</span><h3>Every shop is invited in</h3><p>Dealers, pickers and collectors apply with their past pieces. Only the ones with a real eye get approved.</p></div>
+      <div><span class="eyebrow">The listings</span><h3>Every piece is reviewed</h3><p>Each listing is checked before it goes live. If it isn't good, you won't see it.</p></div>
+      <div><span class="eyebrow">Near you</span><h3>Shop local, see it first</h3><p>You see pieces close to home. Meet the seller, look it over, take it home the same day. Shipping is coming later.</p></div>
     </div>
-    <form class="signup" id="seller-form" novalidate>
-      <label for="seller-email" hidden>Email</label>
-      <input id="seller-email" type="email" placeholder="Your email" autocomplete="email" required>
-      <label for="seller-link" hidden>Instagram or shop link</label>
-      <input id="seller-link" type="text" placeholder="Instagram or shop link">
-      <button class="btn ghost" type="submit" style="border-color: var(--plaster); color: var(--plaster);">Apply to sell</button>
-    </form>
-    <p class="form-note" id="seller-note" aria-live="polite">Applications are reviewed by hand.</p>
   </div>
 </section>
 
-<div class="wrap">
-  <footer>
-    <span class="wordmark">Picked</span>
-    <span>Curated secondhand furniture, picked by hand.</span>
-  </footer>
-</div>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="feats">
+      <div><strong>Filters that work</strong><span>Category, price, style, distance</span></div>
+      <div><strong>Boards</strong><span>Save pieces into collections</span></div>
+      <div><strong>Follow sellers</strong><span>See their new finds first</span></div>
+      <div><strong>Saved searches</strong><span>An email when a match lists</span></div>
+      <div><strong>Offers in one place</strong><span>Offer and counter in one thread</span></div>
+      <div><strong>Order history</strong><span>Every purchase and sale, kept</span></div>
+    </div>
+  </div>
+</section>
 
+<section class="sell" id="sell">
+  <div class="wrap split">
+    <div><h2>Have a good eye? Sell with us.</h2><p class="intro">We're inviting dealers, pickers and collectors in cities across the country to be the first shops on Picked.</p></div>
+    <form id="sell-form" novalidate>
+      <label for="s-email" hidden>Email</label>
+      <input id="s-email" type="email" placeholder="Your email" autocomplete="email">
+      <label for="s-link" hidden>Instagram or shop link</label>
+      <input id="s-link" type="text" placeholder="Instagram or shop link">
+      <button class="btn" type="submit">Apply to sell</button>
+      <p class="form-note" id="s-note" aria-live="polite">Applications are reviewed by hand.</p>
+    </form>
+  </div>
+</section>
+
+<div class="wrap"><footer><span>Picked</span><span>Curated secondhand furniture, picked by hand.</span></footer></div>
 <script>
-  function wire(formId, emailId, noteId, okText) {
-    const form = document.getElementById(formId);
-    const email = document.getElementById(emailId);
-    const note = document.getElementById(noteId);
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const v = email.value.trim();
-      if (!/^\S+@\S+\.\S+$/.test(v)) {
-        note.textContent = "Enter an email address like name@example.com.";
-        note.classList.remove("ok");
-        email.focus();
-        return;
-      }
-      note.textContent = okText + " (This form isn't connected yet, so nothing was saved.)";
-      note.classList.add("ok");
-      form.reset();
-    });
-  }
-  wire("seller-form", "seller-email", "seller-note", "Thanks, we'll take a look.");
+document.getElementById("sell-form").addEventListener("submit", (e) => { e.preventDefault(); document.getElementById("s-note").textContent = "This form isn't connected yet, so nothing was saved."; });
 </script>
 </body>
 </html>
