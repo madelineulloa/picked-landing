@@ -88,10 +88,8 @@ section { padding-block: 88px; }
 
 .sell { background: var(--milk); color: var(--espresso); }
 .sell .split .intro { color: var(--espresso); opacity: .75; }
-.sell form { display: flex; flex-direction: column; gap: 12px; align-self: end; }
-.sell input { width: 100%; font: inherit; padding: 16px 0; border: 0; border-bottom: 1px solid var(--espresso); background: transparent; color: var(--espresso); border-radius: 0; font-size: 18px; }
-.sell input::placeholder { color: var(--espresso); opacity: .55; }
-.sell .btn { align-self: flex-start; margin-top: 12px; background: var(--espresso); color: var(--milk); border-color: var(--espresso); }
+.sell-cta { display: flex; flex-direction: column; gap: 14px; align-self: end; }
+.sell .btn { align-self: flex-start; background: var(--espresso); color: var(--milk); border-color: var(--espresso); }
 .sell .btn:hover { background: transparent; color: var(--espresso); }
 .form-note { font-size: 14px; min-height: 1.4em; opacity: .75; }
 
@@ -167,20 +165,13 @@ footer { padding-block: 32px 44px; display: flex; flex-wrap: wrap; justify-conte
 <section class="sell" id="sell">
   <div class="wrap split">
     <div><h2>Have a good eye? Sell with us.</h2><p class="intro">We're inviting dealers, pickers and collectors in cities across the country to be the first shops on picked.</p></div>
-    <form id="sell-form" novalidate>
-      <label for="s-email" hidden>Email</label>
-      <input id="s-email" type="email" placeholder="Your email" autocomplete="email">
-      <label for="s-link" hidden>Instagram or shop link</label>
-      <input id="s-link" type="text" placeholder="Instagram or shop link">
-      <button class="btn" type="submit">Apply to sell</button>
-      <p class="form-note" id="s-note" aria-live="polite">We review every application.</p>
-    </form>
+    <div class="sell-cta">
+      <a class="btn" href="https://tally.so/r/LDzOzz" target="_blank" rel="noopener">Apply to sell</a>
+      <p class="form-note">Takes two minutes. We review every application.</p>
+    </div>
   </div>
 </section>
 
 <div class="wrap"><footer><span>picked</span><span>Curated secondhand furniture, picked for you.</span></footer></div>
-<script>
-document.getElementById("sell-form").addEventListener("submit", (e) => { e.preventDefault(); document.getElementById("s-note").textContent = "This form isn't connected yet, so nothing was saved."; });
-</script>
 </body>
 </html>
